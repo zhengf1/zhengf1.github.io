@@ -36,8 +36,6 @@
     </div>
   </header>
 
-  <button class="theme-preview" id="theme-preview" type="button" aria-label="Preview next theme">Theme: Fri</button>
-
   <!-- Main Content -->
   <main class="main-wrapper">
 
@@ -203,26 +201,8 @@
   <!-- Scripts -->
   <script>
     const dayNames = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-    const themeButton = document.getElementById('theme-preview');
     const todayTheme = dayNames[new Date().getDay()];
-    let currentThemeIndex = dayNames.indexOf(todayTheme);
-
-    function applyTheme(themeName) {
-      document.body.classList.remove('theme-sun', 'theme-mon', 'theme-tue', 'theme-wed', 'theme-thu', 'theme-fri', 'theme-sat');
-      document.body.classList.add('theme-' + themeName);
-      if (themeButton) {
-        themeButton.textContent = 'Theme: ' + themeName.toUpperCase();
-      }
-    }
-
-    applyTheme(dayNames[currentThemeIndex]);
-
-    if (themeButton) {
-      themeButton.addEventListener('click', () => {
-        currentThemeIndex = (currentThemeIndex + 1) % dayNames.length;
-        applyTheme(dayNames[currentThemeIndex]);
-      });
-    }
+    document.body.classList.add('theme-' + todayTheme);
 
     // Copy email helper
     function copyEmail(el) {
